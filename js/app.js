@@ -4,31 +4,38 @@ function loadNews() {
             if (!response.ok) {
                 throw new Error("Could not load news.json");
             }
-            
+
             return response.json();
         })
         .then(news => {
             const container = document.getElementById("news-container");
 
-            news.slice(0, 5).forEach(article => {
-                const item = document.createElement("div");
-                item.classList.add("news-item");
-
+            news.slice(0, 8).forEach(article => {
                 const date = new Date(article.pubDate);
-
                 const time = date.toLocaleTimeString("de-CH", {
                     hour: "2-digit",
                     minute: "2-digit"
                 });
+                let table = container.querySelector("table");
 
-                item.innerHTML = `
-                    <div class="news-time">${time}</div>
-                    <a href="${article.link}" target="_blank">
-                        ${article.title}
-                    </a>
-                `;
+                if (!table) {
+                    table = document.createElement("table");
+                    table.classList.add("ticker-table");
+                    container.appendChild(table);
+                }
 
-                container.appendChild(item);
+                const row = document.createElement("tr");
+
+                row.innerHTML = `
+    <td class="ticker-time">${time}</td>
+    <td class="ticker-title">
+        <a href="${article.link}" target="_blank">
+            ${article.title}
+        </a>
+    </td>
+`;
+
+                table.appendChild(row);
             });
         })
         .catch(error => {
@@ -42,32 +49,40 @@ function loadSport() {
             if (!response.ok) {
                 throw new Error("Could not load sport.json");
             }
-            
+
             return response.json();
         })
         .then(sport => {
             const container = document.getElementById("sport-container");
 
             // display first 8 sport headlines
-            sport.slice(0, 8).forEach(article => {
-                const item = document.createElement("div");
-                item.classList.add("sport-item");
-
+            sport.slice(0, 4).forEach(article => {
                 const date = new Date(article.pubDate);
-
                 const time = date.toLocaleTimeString("de-CH", {
                     hour: "2-digit",
                     minute: "2-digit"
                 });
 
-                item.innerHTML = `
-                    <span class="sport-time">${time}</span>
-                    <a href="${article.link}" target="_blank">
-                        ${article.title}
-                    </a>
-                `;
+                let table = container.querySelector("table");
 
-                container.appendChild(item);
+                if (!table) {
+                    table = document.createElement("table");
+                    table.classList.add("ticker-table");
+                    container.appendChild(table);
+                }
+
+                const row = document.createElement("tr");
+
+                row.innerHTML = `
+    <td class="ticker-time">${time}</td>
+    <td class="ticker-title">
+        <a href="${article.link}" target="_blank">
+            ${article.title}
+        </a>
+    </td>
+`;
+
+                table.appendChild(row);
             });
         })
         .catch(error => {
@@ -76,7 +91,7 @@ function loadSport() {
 }
 
 function loadWeather() {
-    fetch("/data/wetter.json")
+    fetch("data/wetter.json")
         .then(response => {
             if (!response.ok) {
                 throw new Error("Could not load wetter.json");
@@ -84,31 +99,42 @@ function loadWeather() {
             return response.json();
         })
         .then(weather => {
+
             const container = document.getElementById("weather-container");
 
             const table = document.createElement("table");
             table.classList.add("weather-table");
 
-            weather.forEach(day => {
-                const row = document.createElement("tr");
+            const iconRow = document.createElement("tr");
+            const dayRow = document.createElement("tr");
+            const tempRow = document.createElement("tr");
+            const minRow = document.createElement("tr");
 
-                row.innerHTML = `
+
+            weather.forEach(day => {
+
+                const symbol = day.locations.symbolCode;
+
+                iconRow.innerHTML += `
+                    <td>
+                        <img src="images/weather/${symbol}.gif" 
+                             alt="Weather">
+                    </td>
+                `;
+
+                dayRow.innerHTML += `
                     <td class="weather-day">
                         ${day.titleShort.de}
                     </td>
-
-                    <td class="weather-icon">
-                        <img src="images/weather/${day.locations.symbolCode}.gif"
-                             alt="Weather">
-                    </td>
-
-
                 `;
 
-                table.appendChild(row);
             });
 
+
+            table.appendChild(iconRow);
+            table.appendChild(dayRow);
             container.appendChild(table);
+
         })
         .catch(error => {
             console.error(error);
