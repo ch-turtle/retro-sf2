@@ -22,16 +22,20 @@
 		</header>
 		<div id="content">
 			<aside id="left">
-				<div class="sidebar-box" id="left-sidbar-box">
+				<div class="sidebar-box" id="left-sidebar-box">
+
 					<img src="images/home.gif" alt="HOME" height="31" width="138">
+
 					<div class="box-title">
 						<img src="images/sf1.gif" alt="Jetzt auf SF1">
 					</div>
 					<ul id="sf1-container"></ul>
+
 					<div class="box-title">
 						<img src="images/sf2.gif" alt="Jetzt auf SF2">
 					</div>
 					<ul id="sf2-container"></ul>
+
 				</div>
 			</aside>
 			<main id="center">
@@ -47,9 +51,7 @@
 			<aside id="right">
 				<div class="sidebar-box">
 					<div class="box-title">WETTER</div>
-					<p>Zürich 22°C</p>
-					<p>Bern 20°C</p>
-					<p>Genf 24°C</p>
+					<div id="weather-container"></div>
 				</div>
 				<div class="sidebar-box">
 					<div class="box-title">SUCHE</div>
@@ -63,10 +65,11 @@
 </body>
 <script>
 	document.addEventListener("DOMContentLoaded", () => {
-	    loadNews();
-	    loadSport();
-	    loadWeather();
-	    loadTVGuide();
+		loadNews();
+		loadSport();
+		loadWeather();
+		loadTVGuide();
 	});
 </script>
+
 </html>

@@ -102,10 +102,7 @@ function loadWeather() {
                              alt="Weather">
                     </td>
 
-                    <td class="weather-temp">
-                        ${day.locations.tmax}°<br>
-                        <span>${day.locations.tmin}°</span>
-                    </td>
+
                 `;
 
                 table.appendChild(row);
@@ -119,7 +116,7 @@ function loadWeather() {
 }
 
 function loadTVGuide() {
-    fetch("/data/tv_guide.json")
+    fetch("data/tv_guide.json")
         .then(response => {
             if (!response.ok) {
                 throw new Error("Could not load tv_guide.json");
@@ -133,28 +130,32 @@ function loadTVGuide() {
             const sf1 = document.getElementById("sf1-container");
             const sf2 = document.getElementById("sf2-container");
 
-            const channels = data.channels || data;
+            data.forEach(channelData => {
 
-            channels.forEach(channel => {
-
-                const programs = channel.programList
-                    .filter(program => {
-                        return new Date(program.startTime) >= now;
-                    })
-                    .slice(0, 2);
-
+                const channelTitle = channelData.channel.title;
 
                 let container;
 
-                if (channel.title === "SRF 1") {
+                if (channelTitle === "SRF 1") {
                     container = sf1;
                 }
 
-                if (channel.title === "SRF 2") {
+                if (channelTitle === "SRF zwei") {
                     container = sf2;
                 }
 
                 if (!container) return;
+
+
+                const programs = channelData.programList
+                    .filter(program => {
+                        const start = new Date(program.startTime);
+                        const end = new Date(program.endTime);
+
+                        // keep currently running + upcoming programs
+                        return end >= now;
+                    })
+                    .slice(0, 2);
 
 
                 programs.forEach(program => {
@@ -182,6 +183,6 @@ function loadTVGuide() {
 
         })
         .catch(error => {
-            console.error(error);
+            console.error("TV Guide error:", error);
         });
 }
