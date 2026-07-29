@@ -46,7 +46,7 @@ body {
   padding: 10px;
 }
 
-#left-sidbar-box{
+#left{
   background: #000;
 }
 
@@ -57,7 +57,8 @@ body {
   font-weight: bold;
 }
 
-.sidebar-box,
+
+
 .news-box {
   border: 1px solid #999;
   margin-bottom: 10px;
@@ -65,12 +66,26 @@ body {
 }
 
 .sidebar-box {
+  background: #000000;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.news-box {
   background: #f3f3f3;
 }
 
 .sidebar-box ul {
   margin: 0;
   padding: 8px 18px;
+}
+
+.weather-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 11px;
+    color: #fff;
 }
 
 .news-item {
