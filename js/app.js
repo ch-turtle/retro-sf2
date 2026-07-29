@@ -1,5 +1,5 @@
 function loadNews() {
-    fetch("/data/news.json")
+    fetch("data/news.json")
         .then(response => {
             if (!response.ok) {
                 throw new Error("Could not load news.json");
@@ -44,7 +44,7 @@ function loadNews() {
 }
 
 function loadSport() {
-    fetch("/data/sport.json")
+    fetch("data/sport.json")
         .then(response => {
             if (!response.ok) {
                 throw new Error("Could not load sport.json");
