@@ -4,6 +4,7 @@ function loadNews() {
             if (!response.ok) {
                 throw new Error("Could not load news.json");
             }
+            
             return response.json();
         })
         .then(news => {
@@ -41,6 +42,7 @@ function loadSport() {
             if (!response.ok) {
                 throw new Error("Could not load sport.json");
             }
+            
             return response.json();
         })
         .then(sport => {
