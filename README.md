@@ -1,2 +1,1 @@
-# retro-sf2
-Recreate the retro feel of a time long past, but with current news items.
+# SF DRS Retro A retro recreation of **sfdrs.ch (2003)** using **modern HTML/CSS/JS** and **GitHub Pages**. News content is loaded dynamically from `data/articles.json`, which can be updated automatically using **n8n** and the **SRF RSS feed**.
