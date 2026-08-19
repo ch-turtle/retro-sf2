@@ -1,5 +1,5 @@
 function loadNews() {
-    fetch("data/news.json")
+    fetch("data/news.json?v="+Date.now())
         .then(response => {
             if (!response.ok) {
                 throw new Error("Could not load news.json");
@@ -44,7 +44,7 @@ function loadNews() {
 }
 
 function loadSport() {
-    fetch("data/sport.json")
+    fetch("data/sport.json?v="+Date.now())
         .then(response => {
             if (!response.ok) {
                 throw new Error("Could not load sport.json");
@@ -91,7 +91,7 @@ function loadSport() {
 }
 
 function loadWeather() {
-    fetch("data/wetter.json")
+    fetch("data/wetter.json?v="+Date.now())
         .then(response => {
             if (!response.ok) {
                 throw new Error("Could not load wetter.json");
@@ -142,7 +142,7 @@ function loadWeather() {
 }
 
 function loadTVGuide() {
-    fetch("data/tv_guide.json")
+    fetch("data/tv_guide.json?v="+Date.now())
         .then(response => {
             if (!response.ok) {
                 throw new Error("Could not load tv_guide.json");
