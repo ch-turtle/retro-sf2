@@ -1,181 +1,83 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="de">
 
 <head>
 	<meta charset="UTF-8">
-	<title>SF DRS - News</title>
+	<title>SF DRS</title>
 	<link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 	<div id="page">
-
 		<header id="header">
-			<div id="logo">
-				<a href="index.html">
-					<img src="images/logo.gif" alt="SF DRS">
-				</a>
-			</div>
-
+			<div id="logo"><img src="images/logo.gif" alt="SF DRS"></div>
 			<nav id="topnav">
 				<a href="index.html">Home</a>
-				<a href="news.html" class="active">News</a>
+				<a href="news.html">News</a>
 				<a href="highlights.html">Highlights</a>
 				<a href="tv-guide.html">TV-Guide</a>
 				<a href="#">Shop</a>
 				<a href="#">Intern</a>
 			</nav>
 		</header>
-
-
 		<div id="content">
-
-			<!-- LEFT SIDEBAR -->
 			<aside id="left">
-
 				<div class="sidebar-box" id="left-sidebar-box">
 
-					<img src="images/news.gif"
-					     alt="NEWS"
-					     height="31"
-					     width="138">
+					<img src="images/home.gif" alt="HOME" height="31" width="138">
 
 					<div class="box-title">
-						INLAND
+						<img src="images/sf1.gif" alt="Jetzt auf SF1">
 					</div>
-
-					<ul id="inland-sidebar-container"></ul>
-
+					<ul id="sf1-container"></ul>
 
 					<div class="box-title">
-						AUSLAND
+						<img src="images/sf2.gif" alt="Jetzt auf SF2">
 					</div>
-
-					<ul id="ausland-sidebar-container"></ul>
-
-
-					<div class="box-title">
-						WIRTSCHAFT
-					</div>
-
-					<ul id="wirtschaft-sidebar-container"></ul>
-
-
-					<div class="box-title">
-						VERMISCHTES
-					</div>
-
-					<ul id="vermischtes-sidebar-container"></ul>
+					<ul id="sf2-container"></ul>
 
 				</div>
-
 			</aside>
-
-
-			<!-- CENTER -->
 			<main id="center">
-
 				<div class="news-box">
-
-					<div class="box-title">
-						INLAND
-					</div>
-
-					<div id="inland-container"></div>
-
+					<div class="box-title">Inland</div>
+					<div id="news-container"></div>
 				</div>
-
-
 				<div class="news-box">
-
-					<div class="box-title">
-						AUSLAND
-					</div>
-
-					<div id="ausland-container"></div>
-
+					<div class="box-title">Ausland</div>
+					<div id="sport-container"></div>
 				</div>
-
-
 				<div class="news-box">
-
-					<div class="box-title">
-						WIRTSCHAFT
-					</div>
-
-					<div id="wirtschaft-container"></div>
-
+					<div class="box-title">Wirtschaft</div>
+					<div id="sport-container"></div>
 				</div>
-
-
 				<div class="news-box">
-
-					<div class="box-title">
-						VERMISCHTES
-					</div>
-
-					<div id="vermischtes-container"></div>
-
+					<div class="box-title">Vermischtes</div>
+					<div id="sport-container"></div>
 				</div>
-
 			</main>
-
-
-			<!-- RIGHT -->
 			<aside id="right">
-
 				<div class="sidebar-box">
-
-					<div class="box-title">
-						WETTER
-					</div>
-
+					<div class="box-title">WETTER</div>
 					<div id="weather-container"></div>
-
 				</div>
-
-
 				<div class="sidebar-box">
-
-					<div class="box-title">
-						SUCHE
-					</div>
-
-					<input
-						type="text"
-						placeholder="Suche"
-					>
-
+					<div class="box-title">SUCHE</div>
+					<input type="text" placeholder="Suche">
 				</div>
-
 			</aside>
-
 		</div>
-
-
-		<footer id="footer">
-			Schweizer Fernsehen DRS | SRG SSR idée suisse
-		</footer>
-
+		<footer id="footer"> Schweizer Fernsehen DRS | SRG SSR idée suisse </footer>
 	</div>
-
-
 	<script src="js/app.js"></script>
-
-	<script>
-		document.addEventListener("DOMContentLoaded", () => {
-
-			loadNews();
-
-			loadSport();
-
-			loadWeather();
-
-			loadTVGuide();
-
-		});
-	</script>
-
 </body>
+<script>
+	document.addEventListener("DOMContentLoaded", () => {
+		loadNews();
+		loadSport();
+		loadWeather();
+		loadTVGuide();
+	});
+</script>
 
 </html>
